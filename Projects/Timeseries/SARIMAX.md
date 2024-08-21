@@ -1,4 +1,4 @@
-# Advanced Time Series Forecasting with SARIMAX: A Case Study
+# Time Series Forecasting with SARIMAX: Real World Application
 
 ## Introduction
 
