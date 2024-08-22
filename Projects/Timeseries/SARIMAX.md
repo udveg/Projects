@@ -9,13 +9,13 @@
 
 ## Introduction
 
-Imagine a retail company struggling to predict its monthly sales accurately, leading to overstocked inventory or missed revenue opportunities. Accurate forecasting is crucial for such businesses to make informed decisions and optimize their operations. In this article, we delve into the application of the SARIMAX (Seasonal AutoRegressive Integrated Moving Average with eXogenous factors) model for time series forecasting. This model extends the popular ARIMA model by including seasonal effects and external variables, making it highly suitable for complex forecasting tasks.
+Imagine a retail company struggling to predict its monthly sales accurately, leading to overstocked inventory or missed revenue opportunities. Accurate forecasting is crucial for such businesses to make informed decisions and optimize their operations. In this article, we delve into the application of the `SARIMAX (Seasonal AutoRegressive Integrated Moving Average with eXogenous factors)` model for time series forecasting. This model extends the popular ARIMA model by including seasonal effects and external variables, making it highly suitable for complex forecasting tasks.
 
 
 
 ## Problem Statement
 
-This project aimed to predict the Net Promoter Score (NPS) for the upcoming year using customer data from the health industry. The task involved identifying key variables influencing the NPS and assessing the impact of seasonality. The insights gained were intended to help the organization take targeted actions during risk months to enhance customer satisfaction and retention.
+This project aimed to predict the `Net Promoter Score (NPS)` for the upcoming year using customer data from the health industry. The task involved identifying key variables influencing the NPS and assessing the impact of seasonality. The insights gained were intended to help the organization take targeted actions during risk months to enhance customer satisfaction and retention.
 
 
 ## Data Exploration
@@ -23,7 +23,7 @@ This project aimed to predict the Net Promoter Score (NPS) for the upcoming year
 The dataset included customer feedback and various related variables from the health industry over several years. The goal of this exploration was to understand the trends and patterns in the NPS data, identify any seasonality, and select relevant variables for the forecasting model.
 
 **Variable Selection with Correlation Analysis**:
-   - The correlation between NPS (`ltr` - target variable) and other variables such as service usage, customer complaints, and demographic factors was analyzed.
+   - The correlation between NPS (`ltr` Likelihood to Recommend - target variable) and other variables such as service usage, customer complaints, and demographic factors was analyzed.
    - This step was crucial in identifying potential exogenous variables that could be included in the SARIMAX model to improve forecasting accuracy.
 ```
 ##target variable
@@ -131,6 +131,11 @@ results = model.fit(disp=-1)
 
 2. **Model Fitting**: The model was trained on historical data with missing data filled with the Moving Average method, the missing months are filled as in the above code our last input is 12 which tells the cycle of data in our case it is 1 year so 12 months.
 
+```
+model = SARIMAX(train, exog=exog_train,order=(2,1,1),seasonal_order=(2,1,1,12))
+results = model.fit(disp=-1)
+```
+
 <p align="center">
   <img src="pictures/SARIMA_MODEL.png" alt="Correlation Matrix" width="650" height="550">
 </p>
@@ -143,14 +148,18 @@ results = model.fit(disp=-1)
 
 - **Takeaway**: The model highlights areas for improvement, particularly in customer satisfaction related to specific plan satisfaction and age groups.
 
-3. **Model Evaluation**: Performance was evaluated using metrics like AIC (Akaike Information Criterion) and RMSE (Root Mean Square Error). The model's performance was further validated using out-of-sample data. 
+3. **Model Evaluation**: Performance was evaluated using metrics like AIC (Akaike Information Criterion) and RMSE (Root Mean Square Error). The model's performance was further validated using out-of-sample data. Lets dive into this further in next part. 
 
 ## Results
 
-The SARIMAX model successfully captured the underlying patterns and provided accurate forecasts for the [target variable]. The key results include:
+The SARIMAX model successfully captured the underlying patterns and provided accurate forecasts for the NPS. The key results include:
 
-- [Key findings, e.g., forecasted values, seasonal effects, influence of external variables].
+<p align="center">
+  <img src="pictures/results.png" alt="Correlation Matrix" width="650" height="450">
+</p>
+
 - Visualizations showing actual vs. predicted values, residuals, and forecast errors.
+The SARIMAX model captures the overall NPS trend well, but minor differences between actual and predicted values suggest potential issues, such as missing data. Addressing these gaps could further improve prediction accuracy, though the model already demonstrates strong pattern recognition.
 
 ## Challenges and Improvements
 
@@ -166,13 +175,24 @@ To improve the model, future work could include:
 
 ## Conclusion
 
-This project demonstrates the effectiveness of the SARIMAX model in time series forecasting, especially when seasonality and exogenous factors play a significant role. The model's ability to provide accurate predictions can be a valuable tool for businesses in [your industry], enabling better decision-making and planning.
+In conclusion, the SARIMAX model effectively captures key variables influencing the NPS, such as rx_plan_satisfaction and age_range, highlighting areas where improvements can boost customer satisfaction. 
+This project demonstrates the effectiveness of the SARIMAX model in time series forecasting, especially when seasonality and exogenous factors play a significant role. The model's ability to provide accurate predictions can be a valuable tool for businesses in any industry, enabling better decision-making and improving overall customer experience.
 
 ---
 
 **Keywords**: Time Series, SARIMAX, Forecasting, Seasonal Effects, Exogenous Variables, Python, statsmodels
 
 ---
+## About the Author
 
-### Publishing:
+**Name**: Udveg Reddy Jukanti
+
+**LinkedIn**: [linkedin.com/in/udveg-reddy](https://www.linkedin.com/in/udveg-reddy)
+
+**Portfolio**: [udvegreddy.com](https://www.udvegreddy.com)
+
+**GitHub**: [github.com/udveg](https://github.com/udveg)
+
+
+---
 
