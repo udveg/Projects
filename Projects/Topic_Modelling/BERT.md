@@ -1,7 +1,7 @@
 # Topic Modeling using BERTopic
 
 <p align="center">
-  <img src="Topic_Modelling/Pictures/logo1.png" alt="Correlation Matrix" width="750" height="650">
+  <img src="Pictures/logo1.png" alt="Correlation Matrix" width="750" height="650">
 </p>
 
 
@@ -11,13 +11,13 @@ This paper explores the application of BERTopic ( Bidirectional Encoder Represen
 ## Introduction
 Topic modeling is a crucial technique in natural language processing (NLP) that facilitates the identification of hidden themes within large collections of text. Traditional methods like Latent Dirichlet Allocation (LDA) often struggle with scalability and lack contextual understanding, making them less effective for complex, large-scale datasets. Recently, transformer-based models such as ChatGPT have gained popularity for their impressive ability to generate coherent and context-aware text. However, for topic modeling tasks, BERTopic offers a unique advantage.
 
-Unlike traditional NLP models, BERTopic utilizes BERT (Bidirectional Encoder Representations from Transformers), which reads text bidirectionally—from left to right and right to left—allowing it to capture deeper contextual relationships. This bidirectional reading enhances BERT's understanding of context, making it more adept at interpreting nuanced meanings in text. By leveraging BERT's capabilities along with advanced clustering techniques, BERTopic provides a robust framework for extracting and analyzing topics with greater precision and interoperability.
+Unlike traditional NLP models, BERTopic utilizes BERT (Bidirectional Encoder Representations from Transformers), which reads text bidirectionally—from left to right and right to left—allowing it to capture deeper contextual relationships. This bidirectional reading enhances BERT's understanding of context, making it more adept at interpreting nuanced meanings in text. By leveraging BERT's capabilities and advanced clustering techniques, BERTopic provides a robust framework for extracting and analyzing topics with greater precision and interoperability.
 
 ## Overview 
 #### This study uses survey data where respondents provided feedback on various products. By extracting and analyzing topics from these comments, we aim to provide businesses with actionable insights into customer sentiments and preferences, facilitating better-informed decisions.
 
 <p>
-  <u><strong>Note:</strong></u> Steps taken as part of the analysis are included in a Python code template, which you can download and use to perform similar analysis. <a href="https://github.com/udveg/Projects/tree/main/Projects/Topic_Modelling">Click here to redirect.</a>
+  <u><strong>Note:</strong></u> Steps taken as part of the analysis are included in a Python code template, which you can download and use to perform similar analyses. <a href="https://github.com/udveg/Projects/tree/main/Projects/Topic_Modelling">Click here to redirect.</a>
 </p>
 
 
@@ -94,7 +94,7 @@ df.head()
 
 ```
 <p>
-  <img src="Topic_Modelling/Pictures/output1.png" alt="Correlation Matrix" width="450" height="250">
+  <img src="Pictures/output1.png" alt="Correlation Matrix" width="450" height="250">
 </p>
 
 Removing nulls
@@ -121,7 +121,7 @@ df_cleaned['review_lemmatized'] = df_cleaned['review_without_stopwords'].apply(l
 The BERTopic model was applied to the preprocessed data. The embeddings were generated using a transformer model, followed by clustering using HDBSCAN. The topics were then extracted using c-TF-IDF, and visualization techniques were employed to interpret the results.
 
 <p>
-  <img src="Topic_Modelling/Pictures/output2.png" alt="Correlation Matrix" width="750" height="500">
+  <img src="Pictures/output2.png" alt="Correlation Matrix" width="750" height="500">
 </p>
 
 ## Results
@@ -132,45 +132,48 @@ The application of BERTopic resulted in the identification of several distinct t
   From the image below, exclude Topic -1, which contains comments that the model could not interpret. These comments were grouped into Topic -1 due to containing unique or inconsistent words that didn't fit into the other identified topics.
   
   <p>Moving on to topic 0 or we can say 1 - `0_sound_quality_volume_audio`.</p> 
-  We can undwerstand this topic is about Audio quality of whatever device this survey was taken about, similarly 2nd topic `1_headset_bluetooth_headphone_best` is about bluetooth headphone. 
+  We can understand this topic is about the Audio quality of whatever device this survey was taken about, similarly 2nd topic `1_headset_bluetooth_headphone_best` is about bluetooth headphone. 
   
   <p>
-  <img src="Topic_Modelling/Pictures/output3.png" alt="Correlation Matrix" width="700" height="550">
+  <img src="Pictures/output3.png" alt="Correlation Matrix" width="700" height="550">
 </p>
 
 ---
 
-To understand a topic much better like key terms and their weight we can use below querrry. 
+To understand a topic much better like key terms and their weight we can use the below query. 
 
 ```
-# Get top 10 terms for a topic
+# Get the top 10 terms for a topic
 topic_model.get_topic(0)
 ```
+
 <p>
-  <img src="Topic_Modelling/Pictures/output4.png" alt="Correlation Matrix" width="420" height="250">
+  <img src="Pictures/output4.png" alt="Correlation Matrix" width="420" height="250">
 </p>
 
-The above info gives much deeper sens about topic for example for sure we know that the above topic is about sound quality. Now from this we can extract all records which fall under this topic and can understand better about sound quality issues. 
+The above info gives a much deeper sense of the topic for example for sure we know that the above topic is about sound quality. Now from this we can extract all records which fall under this topic and can understand better about sound quality issues. 
 
-- **Visualization**: The BERTopic gives us various visualization which we can use it for better understanding.
-  We ill go through some of them now -
+- **Visualization**: The BERTopic gives us various visualizations which we can use for better understanding.
+  We'll go through some of them now -
 
-The below querry will provide top keywords used using a bar chart, the number of topics you want to visaulize can be set using `top_n_topics`.
+The below query will provide top keywords used using a bar chart, the number of topics you want to visualise can be set using `top_n_topics`.
 
 ```
 ##Visualize top topic keywords
 topic_model.visualize_barchart(top_n_topics=4, custom_labels=True)
 ```
+
 <p align="center">
-  <img src="Topic_Modelling/Pictures/output5.png" alt="Correlation Matrix" width="400" height="500">
+  <img src="Pictures/output5.png" alt="Correlation Matrix" width="400" height="500">
 </p>
 
 ---
-Another perspective on keyword importance is provided by the "Term Score Decline per Topic" chart. This chart uses a line graph format, where the term rank is displayed on the x-axis, and the c-TF-IDF score is shown on the y-axis.
-Generally we will see a gradual decline in the trend because the term frequency for most of the sentnces will eventually decrease in any sentence. 
+
+The "Term Score Decline per Topic" chart provides another perspective on keyword importance. This chart uses a line graph format, with the term rank displayed on the x-axis and the c-TF-IDF score shown on the y-axis.
+Generally, we will see a gradual decline in the trend because the term frequency for most of the sentences will eventually decrease in any sentence. 
 
 <p align="center">
-  <img src="Topic_Modelling/Pictures/output6.png" alt="Correlation Matrix" width="800" height="500">
+  <img src="Pictures/output6.png" alt="Correlation Matrix" width="800" height="500">
 </p>
 
 
@@ -178,7 +181,7 @@ Generally we will see a gradual decline in the trend because the term frequency 
 The results demonstrate BERTopic's capability to handle large text corpora and provide meaningful topic representations. The use of transformer embeddings significantly improves the quality of topics, while c-TF-IDF and clustering techniques enhance the interpretability of results. The visualization tools offer additional insights, making BERTopic a comprehensive solution for topic modeling in NLP.
 
 ## Conclusion
-This study highlights the effectiveness of BERTopic for topic modeling in natural language processing. By integrating transformer-based embeddings with advanced clustering and visualization techniques, BERTopic provides a robust framework for extracting, interpreting, and visualizing topics. Future work could explore optimizing BERTopic’s hyperparameters for different types of text data and extending its application to multilingual datasets.
+This study highlights the effectiveness of BERTopic for topic modeling in natural language processing. BERTopic provides a robust framework for extracting, interpreting, and visualizing topics by integrating transformer-based embeddings with advanced clustering and visualisation techniques. Future work could explore optimizing BERTopic’s hyperparameters for different types of text data and extending its application to multilingual datasets.
 
 ## References
 1. Grootendorst, M. (2020). BERTopic: Neural topic modeling with BERT. Available at: [URL for BERTopic GitHub or documentation]
