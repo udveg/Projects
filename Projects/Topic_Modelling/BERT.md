@@ -168,12 +168,40 @@ topic_model.visualize_barchart(top_n_topics=4, custom_labels=True)
 </p>
 
 ---
+```
+# Visualize term rank decrease
+topic_model.visualize_term_rank()
+```
 
 The "Term Score Decline per Topic" chart provides another perspective on keyword importance. This chart uses a line graph format, with the term rank displayed on the x-axis and the c-TF-IDF score shown on the y-axis.
 Generally, we will see a gradual decline in the trend because the term frequency for most of the sentences will eventually decrease in any sentence. 
 
 <p align="center">
   <img src="Pictures/output6.png" alt="Correlation Matrix" width="800" height="500">
+</p>
+
+---
+```
+# Visualize intertopic distance
+topic_model.visualize_topics()
+```
+
+The Intertopic Distance Map is useful for visualizing the relationships between different topics identified by the BERTopic model. It shows how closely related or distinct the topics are from each other. Topics clustered together indicate similar themes, while those farther apart represent more distinct topics. This visualization helps to quickly identify related topics and understand the overall structure of the content in the dataset.
+
+<p align="center">
+  <img src="Pictures/newplot.png" alt="Correlation Matrix" width="600" height="550">
+</p>
+
+---
+```
+# Visualize connections between topics using hierachical clustering
+topic_model.visualize_hierarchy(top_n_topics=10)
+```
+
+The Hierarchical Clustering chart visualizes the relationships and similarities between different topics identified by BERTopic. Each line represents a topic, and the branching structure shows how topics are grouped based on their similarity. Topics that are closer together merge at a lower distance, indicating they share common themes or keywords. This visualization helps in understanding the overarching themes within the dataset and how individual topics relate to each other. It’s useful for identifying closely related topics and potential sub-themes.
+
+<p align="center">
+  <img src="Pictures/output7.png" alt="Correlation Matrix" width="1100" height="400">
 </p>
 
 
