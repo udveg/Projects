@@ -33,7 +33,7 @@ OVERWRITE = TRUE | FALSE
    - Established secure connections between Snowflake and GCS.
 
 <p align="center">
-  <img src="Data Solutions/Images/data-unloading-gcs.png" alt="Correlation Matrix" width="650" height="450">
+  <img src="Images/data-unloading-gcs.png" alt="Correlation Matrix" width="650" height="450">
 </p>
 
    - Implemented scripts to automate the upload of data files to GCS buckets, ensuring data was stored in a structured and organized manner.
